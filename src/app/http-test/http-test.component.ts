@@ -9,7 +9,7 @@ import {Http, Response} from "@angular/http";
 export class HttpTestComponent implements OnInit {
 
   private vastaus: any = {};
-  private tapahtumat: any = {};
+  private tyopaikat: any = [];
 
   constructor(private http: Http) { }
 
@@ -25,11 +25,11 @@ export class HttpTestComponent implements OnInit {
 }
 
   private getApi() {
-    this.http.get('http://api.teosto.fi/2015/')
+    this.http.get('http://gis.vantaa.fi/rest/tyopaikat/v1')
       .subscribe(
         (res: Response) => {
-          this.tapahtumat = res.json();
-          console.log(this.tapahtumat);
+          this.tyopaikat = res.json();
+          console.log(this.tyopaikat);
         }
       );
   }
